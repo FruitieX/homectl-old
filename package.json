@@ -1,0 +1,27 @@
+{
+  "name": "homectl",
+  "version": "1.0.0",
+  "description": "Provides an interface for several of my home automation projects",
+  "main": "index.js",
+  "dependencies": {
+    "async": "^1.5.2",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "lodash": "^4.0.0",
+    "request": "^2.67.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FruitieX/homectl.git"
+  },
+  "author": "FruitieX",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FruitieX/homectl/issues"
+  },
+  "homepage": "https://github.com/FruitieX/homectl#readme"
+}

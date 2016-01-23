@@ -1,0 +1,60 @@
+html
+    head
+        script(src='underscore/underscore-min.js')
+        script(src='jquery/dist/jquery.min.js')
+        script(src='bootstrap/dist/js/bootstrap.min.js')
+        link(rel='stylesheet' href='bootstrap/dist/css/bootstrap.min.css')
+        link(rel='stylesheet' href='bootstrap/dist/css/bootstrap-theme.min.css')
+        meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+    body(id='background')
+        div.container
+            div.well.center-block
+                div.btn-toolbar
+                    div.btn-group.btn-group-lg.btn-group-fill-height
+                        a#c(class='btn btn-default') Monitors Off
+                        a#C(class='btn btn-primary') Monitors On
+                    div.btn-group.btn-group-lg.btn-group-fill-height
+                        a#a(class='btn btn-default') Speakers Off
+                        a#A(class='btn btn-primary') Speakers On
+                    div.btn-group.btn-group-lg.btn-group-fill-height
+                        a#b(class='btn btn-default') LEDs Off
+                        a#B(class='btn btn-primary') LEDs On
+
+                br
+
+                div.btn-toolbar
+                    a#all(class='btn btn-default btn-lg') All Off
+                    a#goodnight(class='btn btn-default btn-lg') Goodnight
+        script.
+            ['a', 'b', 'c'].forEach(function(toggle) {
+                $('#' + toggle).click(function() {
+                    $.post('/switch/' + toggle, function() {
+                        console.log('done');
+                    });
+                });
+                $('#' + toggle.toUpperCase()).click(function() {
+                    $.post('/switch/' + toggle.toUpperCase(), function() {
+                        console.log('done');
+                    });
+                });
+            });
+
+            $('#all').click(function() {
+                $.post('/all', function() {
+                    console.log('done');
+                });
+            });
+            $('#goodnight').click(function() {
+                var button = this;
+
+                $(button).attr('disabled', true);
+
+                $.post('/goodnight', function() {
+                    console.log('done');
+                });
+
+                // re-enable button after 30 sec
+                setTimeout(function() {
+                    $(button).attr('disabled', false);
+                }, 30 * 1000);
+            });
